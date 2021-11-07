@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
 import { values } from 'lodash';
 
 const inputFlat = document.querySelector(`#datetime-picker`);
@@ -19,7 +20,7 @@ inputFlat.flatpickr({
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0].getTime() < this.config.defaultDate.getTime()) {
-      window.alert('Please choose a date in the future');
+      Notiflix.Notify.failure('Please choose a date in the future');
     } else {
       buttonStart.disabled = false;
       dedline = selectedDates[0].getTime();
